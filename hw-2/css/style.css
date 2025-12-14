@@ -1,0 +1,339 @@
+/* =========================================
+   1. ПЕРЕМЕННЫЕ (CSS Variables) - Требование 1
+   ========================================= */
+:root {
+    /* Цветовая схема */
+    --primary-color: #2c3e50;    /* Темно-синий для шапки и футера */
+    --secondary-color: #34495e;  /* Чуть светлее для акцентов */
+    --accent-color: #e74c3c;     /* Красный для кнопок и ссылок */
+    --text-color: #333333;       /* Основной цвет текста */
+    --light-text: #ecf0f1;       /* Светлый текст */
+    --background-color: #f4f6f7; /* Фон страницы */
+    --card-bg: #ffffff;          /* Фон карточек */
+
+    /* Размеры */
+    --container-width: 1100px;
+    --spacing-unit: 20px;
+    --border-radius: 8px;
+
+    /* Шрифты */
+    --font-primary: 'Roboto', sans-serif;   /* Заголовки */
+    --font-secondary: 'Open Sans', sans-serif; /* Текст */
+}
+
+/* =========================================
+   2. БАЗОВЫЕ СТИЛИ И СБРОС
+   ========================================= */
+* {
+    box-sizing: border-box; /* Удобная блочная модель */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-secondary);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Прижимаем футер к низу */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+/* Ссылки - Требование 3 (состояния) */
+a {
+    text-decoration: none;
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    display: block;
+}
+
+/* =========================================
+   3. ШАПКА И НАВИГАЦИЯ - Требование 2
+   ========================================= */
+header {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 1rem 0;
+    position: sticky; /* Фиксация при скролле */
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header nav {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Для адаптивности */
+}
+
+header ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Flexbox меню */
+    gap: 20px;
+}
+
+header a {
+    color: var(--light-text);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+/* Эффект наведения на меню */
+header a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+/* Активная страница */
+header a.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Хлебные крошки (второй nav в header) */
+header nav[aria-label="Хлебные крошки"] {
+    background: var(--secondary-color);
+    font-size: 0.9em;
+    padding: 5px var(--spacing-unit);
+    margin-top: 10px;
+    display: block;
+}
+
+header nav[aria-label="Хлебные крошки"] ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 10px;
+}
+
+header nav[aria-label="Хлебные крошки"] li::after {
+    content: "/";
+    margin-left: 10px;
+    color: #ccc;
+}
+
+header nav[aria-label="Хлебные крошки"] li:last-child::after {
+    content: "";
+}
+
+/* =========================================
+   4. КОНТЕНТ (Main)
+   ========================================= */
+main {
+    max-width: var(--container-width);
+    margin: 40px auto;
+    padding: 0 var(--spacing-unit);
+    flex: 1; /* Растягивает main, чтобы футер ушел вниз */
+    width: 100%;
+}
+
+section {
+    background: var(--card-bg);
+    margin-bottom: 30px;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    
+    /* Анимация появления при скролле (простая реализация через keyframes) - Требование 5 */
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   5. КОМПОНЕНТЫ - Требование 4
+   ========================================= */
+
+/* Компонент 1: Кнопка (.btn) */
+button, .btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s, background-color 0.2s;
+    font-family: var(--font-primary);
+}
+
+button:hover, .btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px); /* Интерактивный эффект */
+    text-decoration: none;
+    color: white;
+}
+
+/* Компонент 2: Карточка (используем figure как карточку) */
+figure {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    padding: 10px;
+    margin: 20px 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Интерактивный эффект */
+}
+
+figure:hover {
+    transform: scale(1.02); /* Увеличение при наведении */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+figcaption {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* Компонент 3: Таблица */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Эффект наведения на строку */
+}
+
+/* =========================================
+   6. ФОРМЫ
+   ========================================= */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+}
+
+/* =========================================
+   7. ПОДВАЛ (Footer) - Требование 2
+   ========================================= */
+footer {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+footer hr {
+    border-color: rgba(255,255,255,0.1);
+    width: 80%;
+    margin: 10px auto;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   8. АДАПТИВНОСТЬ - Требование 6
+   ========================================= */
+
+/* Планшеты и меньше (до 768px) */
+@media (max-width: 768px) {
+    header ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    header nav {
+        flex-direction: column;
+    }
+    
+    main {
+        padding: 0 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Мобильные (до 576px) */
+@media (max-width: 576px) {
+    header ul li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    header a {
+        display: block;
+        padding: 10px;
+        background: rgba(255,255,255,0.05);
+    }
+    
+    section {
+        padding: 15px;
+    }
+    
+    figure img {
+        width: 100%;
+        height: auto;
+    }
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Свяжитесь со мной">
+    <title>Контакты - Бубнов Никита</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav aria-label="Основное меню">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О себе</a></li>
+                <li><a href="hobbies.html">Увлечения</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="contacts.html" class="active">Контакты</a></li>
+            </ul>
+        </nav>
+        <nav aria-label="Местонахождение">
+            <ol>
+                <li><a href="index.html">Главная</a></li>
+                <li aria-current="page">♦ Контакты ♦</li>
+            </ol>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Свяжитесь со мной</h1>
+        <p>Связаться можно в разнообразных местах,главным образом это перечисленные ниже варианты.</p>
+
+        <section>
+            <h2>Контактная информация</h2>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:nik2017bubnow@gmail.com">nik2017bubnow@gmail.com</a></li>
+                <li><strong>Телефон:</strong> <a href="tel:+79012802284">+7 (901) 280-22-84</a></li>
+                <li><strong>Telegram:</strong> <a href="https://t.me/spinnesozNB">@spinnesozNB</a></li>
+            </ul>
+
+            <h3>Мои сети</h3>
+            <ul>
+                <li><a href="https://vk.com/spinnesoz" target="_blank">VKontakte</a></li>
+                <li><a href="https://github.com/Spinnesoz" target="_blank">GitHub</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Написать сообщение</h2>
+            <form action="#" method="post">
+                <div>
+                    <label for="name">Ваше имя:</label><br>
+                    <input type="text" id="name" name="name" required placeholder="Иван Иванов">
+                </div>
+                <br>
+                <div>
+                    <label for="email">Ваш Email:</label><br>
+                    <input type="email" id="email" name="email" required placeholder="ivan@example.com">
+                </div>
+                <br>
+                <div>
+                    <label for="subject">Тема обращения:</label><br>
+                    <select id="subject" name="subject">
+                        <option value="question">Общий вопрос</option>
+                        <option value="job">Предложение о работе</option>
+                        <option value="collab">Сотрудничество</option>
+                        <option value="other">Другое</option>
+                    </select>
+                </div>
+                <br>
+                <div>
+                    <label for="message">Сообщение:</label><br>
+                    <textarea id="message" name="message" rows="5" cols="40" required placeholder="Введите ваш текст..."></textarea>
+                </div>
+                <br>
+                <div>
+                    <input type="checkbox" id="agree" name="agree" required>
+                    <label for="agree">Я согласен на обработку персональных данных</label>
+                </div>
+                <br>
+                <button type="submit">Отправить</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Где я нахожусь</h2>
+            <p>Ярославль, город где я в настоящее время прохожу обечение в ВУЗе</p>
+            <figure>
+                <img src="https://sun9-51.userapi.com/s/v1/ig2/tmHn0EOjoybvGrA3tXQzlK6nKbrDHBMZvPIBdyStBg6An_-48V3DwqQUY7FRb7xloyJyZrGFFsQOfj7RhleGfCMW.jpg?quality=95&as=32x26,48x38,72x57,108x86,160x128,240x191,360x287,480x383,540x431,640x511,720x574,846x675&from=bu&cs=846x0" alt="Карта города Ярославль" width="600">
+                <figcaption>г. Ярославль, обозначение моего дома.</figcaption>
+            </figure>
+        </section>
+
+        <section>
+            <h2>Дополнительная информация</h2>
+            <p>
+                Наилучшая возможность получить скорейший отклик это связаться в выходной, поскольку в будние дни я зачастую нахожусь за учебных занятиях.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <hr>
+        <p>&copy; 2025 Бубнов Никита.</p>
+    </footer>
+
+</body>
+</html>
